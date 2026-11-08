@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>از پروژه تا تاب‌آوری اجتماعی | راهنمای تعاملی معلمان</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Vazirmatn -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Vazirmatn', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        act: {
+                            light: '#fef3c7',
+                            DEFAULT: '#f59e0b',
+                            dark: '#b45309'
+                        },
+                        sel: {
+                            light: '#ecfdf5',
+                            DEFAULT: '#10b981',
+                            dark: '#047857'
+                        },
+                        steam: {
+                            light: '#eff6ff',
+                            DEFAULT: '#3b82f6',
+                            dark: '#1d4ed8'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        .tab-btn.active {
+            border-bottom: 3px solid #0ea5e9;
+            color: #0284c7;
+            font-weight: 700;
+        }
+        .badge-lock {
+            filter: grayscale(1);
+            opacity: 0.4;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+    <!-- Top Banner for Designer Credit -->
+    <div class="bg-gradient-to-r from-brand-900 via-brand-700 to-slate-900 text-white text-xs py-2.5 px-4 shadow-inner">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+            <div class="flex items-center gap-2 flex-wrap justify-center sm:justify-start">
+                <span class="bg-amber-400 text-slate-900 font-extrabold px-2.5 py-0.5 rounded text-[11px]">ارزیابی و طراحی آموزشی</span>
+                <span class="font-semibold text-slate-100">طراح و تدوین‌کننده: <strong class="text-amber-300 font-bold">سمیرا رضوانی</strong></span>
+                <span class="text-slate-300 hidden md:inline">| سرگروه درس کار و فناوری قطب چابهار</span>
+            </div>
+            <div class="text-slate-300 text-[11px]">
+                <i class="fa-solid fa-graduation-cap ml-1"></i> ویژه معلمان پایه‌های ششم تا نهم
+            </div>
+        </div>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-teal-500 flex items-center justify-center text-white text-xl shadow-md">
+                        <i class="fa-solid fa-bridge"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-base sm:text-lg text-slate-800 leading-tight">معمار تاب‌آوری؛ از پروژه تا تاب‌آوری اجتماعی</h1>
+                        <p class="text-xs text-slate-500 hidden sm:block">ترکیب چارچوب‌های SEL ،STEAM و ACT در محیط کلاس کار و فناوری</p>
+                    </div>
+                </div>
+                
+                <!-- Navigation Tabs -->
+                <nav class="flex gap-1 sm:gap-6 text-xs sm:text-sm font-medium">
+                    <button onclick="switchTab('hub')" id="tab-hub" class="tab-btn active py-4 px-2 sm:px-4 text-slate-600 hover:text-brand-600 transition">
+                        <i class="fa-solid fa-book-open ml-1"></i> پایگاه یادگیری
+                    </button>
+                    <button onclick="switchTab('simulator')" id="tab-simulator" class="tab-btn py-4 px-2 sm:px-4 text-slate-600 hover:text-brand-600 transition">
+                        <i class="fa-solid fa-gamepad ml-1"></i> شبیه‌ساز و آزمون
+                    </button>
+                    <button onclick="switchTab('badges')" id="tab-badges" class="tab-btn py-4 px-2 sm:px-4 text-slate-600 hover:text-brand-600 transition">
+                        <i class="fa-solid fa-award ml-1"></i> مدال‌ها
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
+
+        <!-- SECTION 1: LEARNING HUB -->
+        <section id="section-hub" class="space-y-10">
+            <!-- Hero Banner -->
+            <div class="relative bg-gradient-to-r from-slate-900 via-brand-900 to-slate-900 rounded-3xl p-6 sm:p-10 text-white overflow-hidden shadow-xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="relative z-10 lg:col-span-7">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/20 text-amber-300 text-xs rounded-full border border-amber-400/30 font-semibold mb-4">
+                        <i class="fa-solid fa-star"></i>
+                        <span>طراحی آموزشی: سمیرا رضوانی (سرگروه کار و فناوری چابهار)</span>
+                    </div>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold mb-4 leading-relaxed">
+                        محصول، صرفاً بهانه‌ای برای تمرین تاب‌آوری است!
+                    </h2>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+                        هدف واقعی کار گروهی، حل تعارض، مواجهه سازنده با شکست و ساخت مهارت‌های اجتماعی است. پروژه به تنهایی تاب‌آوری ایجاد نمی‌کند؛ بلکه **هدایت آگاهانه معلم** این کار را ممکن می‌سازد.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <button onclick="switchTab('simulator')" class="bg-brand-500 hover:bg-brand-600 text-white font-bold py-2.5 px-6 rounded-xl shadow-lg hover:shadow-brand-500/25 transition flex items-center gap-2">
+                            <i class="fa-solid fa-play"></i> شروع شبیه‌ساز و آزمون تعاملی
+                        </button>
+                        <a href="#bridge-framework" class="bg-white/10 hover:bg-white/20 text-white font-medium py-2.5 px-6 rounded-xl border border-white/20 transition">
+                            بررسی مدل «پل تاب‌آوری»
+                        </a>
+                    </div>
+                </div>
+                <!-- Hero Visual Image -->
+                <div class="lg:col-span-5 relative z-10">
+                    <div class="relative rounded-2xl overflow-hidden border-2 border-amber-400/30 shadow-2xl group">
+                        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80" 
+                             alt="دانش‌آموزان در کلاس درس کار و فناوری" 
+                             class="w-full h-56 sm:h-64 object-cover group-hover:scale-105 transition duration-500"
+                             onerror="this.src='https://placehold.co/600x400/075985/ffffff?text=کلاس+کار+و+فناوری'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-3 right-3 text-xs text-white/90 bg-slate-900/80 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/10 flex items-center gap-2">
+                            <i class="fa-solid fa-school text-amber-400"></i>
+                            <span>کار گروهی دانش‌آموزان در محیط کلاس درس</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visual Classroom Showcase Gallery -->
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+                <div class="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-800">تعامل و ساخت پروژه در مدارس</h3>
+                        <p class="text-slate-500 text-xs sm:text-sm">تصاویر فرایند ایده، دست‌ورزی، تست فنی و مدیریت هیجان شکست در کلاس</p>
+                    </div>
+                    <span class="text-xs bg-amber-50 text-amber-800 px-3 py-1.5 rounded-xl font-bold border border-amber-200">
+                        قطب کار و فناوری چابهار
+                    </span>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <!-- Image 1 -->
+                    <div class="relative rounded-2xl overflow-hidden border border-slate-200 group h-52">
+                        <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=600&q=80" 
+                             alt="همکاری دانش‌آموزان در پروژه" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                             onerror="this.src='https://placehold.co/400x300/0369a1/ffffff?text=همکاری+دانش‌آموزان'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/30 to-transparent p-4 flex flex-col justify-end text-white">
+                            <span class="font-bold text-sm">۱. گفت‌وگو و ایده‌پردازی مشترک</span>
+                            <span class="text-[11px] text-slate-300">شنیدن نظرات متضاد و تصمیم‌گیری بر اساس معیارهای عینی</span>
+                        </div>
+                    </div>
+                    <!-- Image 2 -->
+                    <div class="relative rounded-2xl overflow-hidden border border-slate-200 group h-52">
+                        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80" 
+                             alt="تست سازه و دست‌ورزی" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                             onerror="this.src='https://placehold.co/400x300/047857/ffffff?text=دست‌ورزی+و+ساخت+سازه'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/30 to-transparent p-4 flex flex-col justify-end text-white">
+                            <span class="font-bold text-sm">۲. ساخت سازه و تقسیم وظایف</span>
+                            <span class="text-[11px] text-slate-300">نقش‌های چرخشی: طراح، تستر، مسئول ثبت داده</span>
+                        </div>
+                    </div>
+                    <!-- Image 3 -->
+                    <div class="relative rounded-2xl overflow-hidden border border-slate-200 group h-52">
+                        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=600&q=80" 
+                             alt="کالبدشکافی علمی و بازتاب" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+                             onerror="this.src='https://placehold.co/400x300/b45309/ffffff?text=تحلیل+شکست+و+داده‌های+علمی'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/30 to-transparent p-4 flex flex-col justify-end text-white">
+                            <span class="font-bold text-sm">۳. تبدیل شکست به داده علمی</span>
+                            <span class="text-[11px] text-slate-300">کالبدشکافی بدون سرزنش (قانون ۴۵ ثانیه)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Framework Section: Resilience Bridge -->
+            <div id="bridge-framework" class="scroll-mt-20">
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl font-bold text-slate-800">سه رکن اصلی «پل تاب‌آوری»</h3>
+                    <p class="text-slate-500 text-sm mt-1">هم‌افزایی چارچوب‌های علمی STEAM ،SEL و ACT در کلاس درس</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- STEAM Card -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden relative">
+                        <div class="h-36 -mx-6 -mt-6 mb-4 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" 
+                                 alt="STEAM Education" class="w-full h-full object-cover hover:scale-105 transition duration-500"
+                                 onerror="this.src='https://placehold.co/500x200/1d4ed8/ffffff?text=بستر+فیزیکی+STEAM'">
+                            <div class="absolute top-3 right-3 w-10 h-10 rounded-xl bg-white/90 text-steam-dark flex items-center justify-center text-xl font-bold shadow-md">
+                                <i class="fa-solid fa-cubes"></i>
+                            </div>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-800 mb-2">STEAM (پایه و بستر)</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            علوم، فناوری، مهندسی، هنر و ریاضیات. بستر فیزیکی چالش‌ها و حل مسائل واقعی کلاس.
+                        </p>
+                        <span class="inline-flex items-center text-xs font-semibold text-steam-dark bg-steam-light px-2.5 py-1 rounded-md">
+                            نقش: مسائل عینی و فیزیکی
+                        </span>
+                    </div>
+
+                    <!-- SEL Card -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden relative">
+                        <div class="h-36 -mx-6 -mt-6 mb-4 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=600&q=80" 
+                                 alt="SEL Education" class="w-full h-full object-cover hover:scale-105 transition duration-500"
+                                 onerror="this.src='https://placehold.co/500x200/047857/ffffff?text=یادگیری+اجتماعی+هیجانی+SEL'">
+                            <div class="absolute top-3 right-3 w-10 h-10 rounded-xl bg-white/90 text-sel-dark flex items-center justify-center text-xl font-bold shadow-md">
+                                <i class="fa-solid fa-handshake"></i>
+                            </div>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-800 mb-2">SEL (ملات پیونددهنده)</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            یادگیری اجتماعی-هیجانی. ملاتی که اعضای گروه را متصل نگه می‌دارد (خودآگاهی، خودمدیریتی، تصمیم‌گیری).
+                        </p>
+                        <span class="inline-flex items-center text-xs font-semibold text-sel-dark bg-sel-light px-2.5 py-1 rounded-md">
+                            نقش: اتصال و انسجام گروهی
+                        </span>
+                    </div>
+
+                    <!-- ACT Card -->
+                    <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition overflow-hidden relative">
+                        <div class="h-36 -mx-6 -mt-6 mb-4 overflow-hidden relative">
+                            <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=600&q=80" 
+                                 alt="ACT Psychology" class="w-full h-full object-cover hover:scale-105 transition duration-500"
+                                 onerror="this.src='https://placehold.co/500x200/b45309/ffffff?text=انعطاف‌پذیری+روان‌شناختی+ACT'">
+                            <div class="absolute top-3 right-3 w-10 h-10 rounded-xl bg-white/90 text-act-dark flex items-center justify-center text-xl font-bold shadow-md">
+                                <i class="fa-solid fa-brain"></i>
+                            </div>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-800 mb-2">ACT (جاذب شوک شکست)</h4>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            پذیرش و تعهد. ابزار شناختی برای جذب شوک شکست‌ها، گسلش شناختی و حضور در لحظه.
+                        </p>
+                        <span class="inline-flex items-center text-xs font-semibold text-act-dark bg-act-light px-2.5 py-1 rounded-md">
+                            نقش: هضم ناکامی و اقدام متعهدانه
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5 Stations Section -->
+            <div class="bg-slate-900 text-white rounded-3xl p-6 sm:p-8">
+                <div class="mb-6">
+                    <h3 class="text-xl sm:text-2xl font-bold">نقشه راه تسهیل‌گری: ۵ ایستگاه تاب‌آوری در کلاس</h3>
+                    <p class="text-slate-400 text-sm mt-1">مراحل پنج‌گانه هدایت پروژه از شروع تا ارزشیابی</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                    <!-- Station 1 -->
+                    <div class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700 hover:border-brand-500 transition">
+                        <div class="text-brand-400 font-extrabold text-lg mb-2">ایستگاه ۱</div>
+                        <h4 class="font-bold text-base mb-2">قواعد بازی</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            تعیین قواعد همکاری پیش از دست زدن به ابزار (مثال: اشتباهات را مسخره نمی‌کنیم).
+                        </p>
+                    </div>
+                    <!-- Station 2 -->
+                    <div class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700 hover:border-brand-500 transition">
+                        <div class="text-brand-400 font-extrabold text-lg mb-2">ایستگاه ۲</div>
+                        <h4 class="font-bold text-base mb-2">تقسیم کار و هویت</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            تخصیص نقش‌های شفاف، قابل انجام و چرخشی (طراح، تستر، مسئول ثبت داده).
+                        </p>
+                    </div>
+                    <!-- Station 3 -->
+                    <div class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700 hover:border-brand-500 transition">
+                        <div class="text-brand-400 font-extrabold text-lg mb-2">ایستگاه ۳</div>
+                        <h4 class="font-bold text-base mb-2">نقطه بحران</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            تسهیل‌گری به جای پاسخ دادن؛ پرسیدن «کوچک‌ترین قدم بعدی چیست؟».
+                        </p>
+                    </div>
+                    <!-- Station 4 -->
+                    <div class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700 hover:border-brand-500 transition">
+                        <div class="text-brand-400 font-extrabold text-lg mb-2">ایستگاه ۴</div>
+                        <h4 class="font-bold text-base mb-2">پس از شکست</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            کالبدشکافی بدون سرزنش و تبدیل شکست به داده‌های علمی (روش ۴۵ ثانیه).
+                        </p>
+                    </div>
+                    <!-- Station 5 -->
+                    <div class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700 hover:border-brand-500 transition">
+                        <div class="text-brand-400 font-extrabold text-lg mb-2">ایستگاه ۵</div>
+                        <h4 class="font-bold text-base mb-2">ارزشیابی دوگانه</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            سنجش جداگانه کیفیت محصول فنی و رفتار تاب‌آورانه / همکاری گروهی.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Troubleshooting Table -->
+            <div>
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold text-slate-800">جدول عیب‌یابی رفتاری تیم‌ها و مداخلات آگاهانه</h3>
+                    <p class="text-slate-500 text-sm mt-1">تفاوت واکنش سنتی سرزنش‌گر با مداخله آگاهانه تسهیل‌گر</p>
+                </div>
+                <div class="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm bg-white">
+                    <table class="w-full text-right text-sm">
+                        <thead class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
+                            <tr>
+                                <th class="p-4">شخصیت / علامت تیم</th>
+                                <th class="p-4">واکنش مخرب سنتی</th>
+                                <th class="p-4 bg-emerald-50 text-emerald-900">مداخله آگاهانه تسهیل‌گر</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr>
+                                <td class="p-4 font-bold text-slate-800">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fa-solid fa-crown text-amber-500"></i>
+                                        <span>دیکتاتور همه کاره (Do-it-all)</span>
+                                    </div>
+                                    <span class="text-xs font-normal text-slate-500 block mt-1">یک نفر همه کار را انجام می‌دهد، بقیه تماشاگرند.</span>
+                                </td>
+                                <td class="p-4 text-rose-600 bg-rose-50/30">
+                                    «چرا بقیه هیچ کاری نمی‌کنید؟» (ایجاد شرم)
+                                </td>
+                                <td class="p-4 text-emerald-800 bg-emerald-50/30">
+                                    چرخش اجباری نقش‌ها + الزام هر عضو به بیان نیاز به کمک برای وظیفه‌اش.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-bold text-slate-800">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fa-solid fa-ghost text-slate-400"></i>
+                                        <span>غایب پنهان (The Ghost)</span>
+                                    </div>
+                                    <span class="text-xs font-normal text-slate-500 block mt-1">«من بلد نیستم، خودتان انجام دهید.»</span>
+                                </td>
+                                <td class="p-4 text-rose-600 bg-rose-50/30">
+                                    برچسب زدن به عنوان فرد تنبل یا بی‌انگیزه.
+                                </td>
+                                <td class="p-4 text-emerald-800 bg-emerald-50/30">
+                                    دادن مأموریت خُرد مشخص و کم‌خطر (مثلاً: رسم ۳ طرح روی کاغذ و نوشتن محدودیت‌ها).
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-bold text-slate-800">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fa-solid fa-explosion text-rose-500"></i>
+                                        <span>تعارض مخرب (Hostile Conflict)</span>
+                                    </div>
+                                    <span class="text-xs font-normal text-slate-500 block mt-1">«طرح من بهتر است، تو هیچ‌چیز نمی‌فهمی!»</span>
+                                </td>
+                                <td class="p-4 text-rose-600 bg-rose-50/30">
+                                    متوقف کردن دعوا بدون حل ریشه‌ای.
+                                </td>
+                                <td class="p-4 text-emerald-800 bg-emerald-50/30">
+                                    انتقال تمرکز از افراد به ایده‌ها؛ تعیین ۳ معیار (استحکام، هزینه، ایمنی) و سنجش طرح‌ها.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 font-bold text-slate-800">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fa-solid fa-graduation-cap text-indigo-500"></i>
+                                        <span>وسواس نمره (Grade Obsessive)</span>
+                                    </div>
+                                    <span class="text-xs font-normal text-slate-500 block mt-1">«فقط محصول نهایی باید عالی باشد تا نمره بگیریم.»</span>
+                                </td>
+                                <td class="p-4 text-rose-600 bg-rose-50/30">
+                                    نمره‌دهی صرفاً بر اساس کارکرد محصول.
+                                </td>
+                                <td class="p-4 text-emerald-800 bg-emerald-50/30">
+                                    ارزشیابی دوگانه: تفکیک نمره فرایند همکاری و مدیریت اشتباهات از کارکرد نهایی.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Facilitator Manifesto Cards -->
+            <div>
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold text-slate-800">مانیفست معلم تسهیل‌گر</h3>
+                    <p class="text-slate-500 text-sm mt-1">اصول طلایی که هر معلم کار و فناوری باید به خاطر داشته باشد</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-400 transition flex gap-4">
+                        <div class="text-brand-500 text-2xl flex-shrink-0"><i class="fa-solid fa-shield-halved"></i></div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 text-sm mb-1">۱. امنیت روان‌شناختی را تضمین کنید</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">پروژه بهانه‌ای برای تحقیر یا فشار بر هیچ دانش‌آموزی نیست.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-400 transition flex gap-4">
+                        <div class="text-brand-500 text-2xl flex-shrink-0"><i class="fa-solid fa-heart-circle-check"></i></div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 text-sm mb-1">۲. احساس را معتبر اما رفتار را مدیریت کنید</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">خشم هنگام شکست طبیعی است؛ اما توهین و تخریب ممنوع است.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-400 transition flex gap-4">
+                        <div class="text-brand-500 text-2xl flex-shrink-0"><i class="fa-solid fa-hands-holding-child"></i></div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 text-sm mb-1">۳. چالش را سرقت نکنید!</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">مشکل را فوراً از دست دانش‌آموز قاپ نزنید (جلوی ناجی‌گری معلم را بگیرید).</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-400 transition flex gap-4">
+                        <div class="text-brand-500 text-2xl flex-shrink-0"><i class="fa-solid fa-people-group"></i></div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 text-sm mb-1">۴. همکاری را تدریس کنید</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">کار گروهی غریزی نیست؛ بلکه نیازمند آموزش و تمرین صریح است.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-400 transition flex gap-4">
+                        <div class="text-brand-500 text-2xl flex-shrink-0"><i class="fa-solid fa-route"></i></div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 text-sm mb-1">۵. مسیر را نمره دهید، نه فقط مقصد</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">کیفیت و فرآیند رسیدن به جواب، بسیار مهم‌تر از پاسخ نهایی است.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-brand-400 transition flex gap-4">
+                        <div class="text-brand-500 text-2xl flex-shrink-0"><i class="fa-solid fa-microscope"></i></div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 text-sm mb-1">۶. شکست را به «داده» تبدیل کنید</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">به جای «اشتباه کردید!» بپرسید: «دقیقاً چه چیزی را مشاهده کردید؟»</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: INTERACTIVE SIMULATOR / QUIZ -->
+        <section id="section-simulator" class="hidden max-w-4xl mx-auto space-y-6">
+            <!-- Simulator Card Header -->
+            <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col sm:flex-row justify-between items-center gap-4">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-800">شبیه‌ساز تصمیم‌گیری کلاسی (سناریو بازی)</h2>
+                    <p class="text-slate-500 text-xs sm:text-sm">وضعیت‌های واقعی را مواجهه کرده و بهترین پاسخ تسهیل‌گرانه را انتخاب کنید.</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="bg-brand-50 px-4 py-2 rounded-xl border border-brand-100 text-brand-700 font-bold text-sm">
+                        امتیاز: <span id="current-score" class="text-brand-600">۰</span> / ۸۰
+                    </div>
+                    <div class="bg-amber-50 px-3 py-2 rounded-xl border border-amber-100 text-amber-700 font-bold text-xs">
+                        سوال <span id="quiz-step">۱</span> از ۸
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Box -->
+            <div id="quiz-container" class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-md">
+                <!-- Question Title -->
+                <div class="mb-6">
+                    <span id="scenario-tag" class="text-xs font-semibold px-3 py-1 bg-slate-100 text-slate-600 rounded-full inline-block mb-3">
+                        سناریوی شماره ۱
+                    </span>
+                    <h3 id="scenario-title" class="text-lg sm:text-xl font-bold text-slate-800 leading-relaxed">
+                        عنوان سناریو بارگذاری می‌شود...
+                    </h3>
+                </div>
+
+                <!-- Options Grid -->
+                <div id="options-container" class="space-y-3 mb-6">
+                    <!-- Options injected dynamically -->
+                </div>
+
+                <!-- Feedback Box (Hidden initially) -->
+                <div id="feedback-box" class="hidden p-5 rounded-2xl border mb-6 transition-all duration-300">
+                    <div class="flex items-start gap-3">
+                        <div id="feedback-icon" class="text-xl mt-0.5"></div>
+                        <div>
+                            <h4 id="feedback-title" class="font-bold text-sm mb-1"></h4>
+                            <p id="feedback-text" class="text-xs leading-relaxed text-slate-700"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Button -->
+                <div class="flex justify-end">
+                    <button id="next-btn" onclick="nextQuestion()" disabled class="bg-slate-300 text-slate-500 font-bold py-3 px-8 rounded-xl cursor-not-allowed transition">
+                        سوال بعدی <i class="fa-solid fa-arrow-left mr-2"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Result Box (Hidden until finish) -->
+            <div id="result-container" class="hidden bg-white rounded-3xl p-8 border border-slate-200 shadow-lg text-center space-y-6">
+                <div class="w-20 h-20 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center text-4xl mx-auto shadow-inner">
+                    <i class="fa-solid fa-trophy"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-slate-800">پایان شبیه‌ساز و ارزیابی عملکرد!</h3>
+                <p class="text-slate-600 text-sm max-w-md mx-auto">
+                    شما با موفقیت سناریوهای مدیریت کلاس مبتنی بر تاب‌آوری را پشت سر گذاشتید.
+                </p>
+                <div class="text-4xl font-extrabold text-brand-600">
+                    امتیاز نهایی: <span id="final-score">۰</span> از ۸۰
+                </div>
+                
+                <div id="badge-earned-box" class="p-4 bg-emerald-50 border border-emerald-200 rounded-2xl max-w-sm mx-auto text-right flex items-center gap-3">
+                    <div class="text-3xl text-emerald-600"><i class="fa-solid fa-award"></i></div>
+                    <div>
+                        <div class="text-xs text-emerald-700 font-medium">نشان کسب شده:</div>
+                        <div id="final-badge-title" class="font-bold text-emerald-900 text-sm">معلم تسهیل‌گر تاب‌آور</div>
+                    </div>
+                </div>
+
+                <div class="flex justify-center gap-4 pt-4">
+                    <button onclick="restartQuiz()" class="bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 px-6 rounded-xl shadow-md transition">
+                        <i class="fa-solid fa-rotate-right ml-2"></i> تکرار مجدد آزمون
+                    </button>
+                    <button onclick="switchTab('hub')" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3 px-6 rounded-xl transition">
+                        بازگشت به پایگاه یادگیری
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: BADGES & ACHIEVEMENTS -->
+        <section id="section-badges" class="hidden space-y-6">
+            <div class="text-center max-w-xl mx-auto mb-8">
+                <h2 class="text-2xl font-bold text-slate-800">نشان‌های افتخار و دستاوردها</h2>
+                <p class="text-slate-500 text-sm mt-1">با پاسخگویی به سناریوهای کلاسی، نشان‌های شایستگی تسهیل‌گری را آزاد کنید.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Badge 1 -->
+                <div id="badge-card-1" class="bg-white rounded-2xl p-6 border border-slate-200 text-center space-y-3 badge-lock transition">
+                    <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-3xl mx-auto">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-800 text-base">پایه‌گذار امنیت روان‌شناختی</h4>
+                    <p class="text-xs text-slate-500">حداقل کسب ۳۰ امتیاز در شبیه‌ساز</p>
+                    <span class="badge-status text-[11px] bg-slate-100 text-slate-500 px-3 py-1 rounded-full font-medium inline-block">قفل شده</span>
+                </div>
+
+                <!-- Badge 2 -->
+                <div id="badge-card-2" class="bg-white rounded-2xl p-6 border border-slate-200 text-center space-y-3 badge-lock transition">
+                    <div class="w-16 h-16 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-3xl mx-auto">
+                        <i class="fa-solid fa-shield-cat"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-800 text-base">استاد مدیریت بحران کلاسی</h4>
+                    <p class="text-xs text-slate-500">حداقل کسب ۵۰ امتیاز در شبیه‌ساز</p>
+                    <span class="badge-status text-[11px] bg-slate-100 text-slate-500 px-3 py-1 rounded-full font-medium inline-block">قفل شده</span>
+                </div>
+
+                <!-- Badge 3 -->
+                <div id="badge-card-3" class="bg-white rounded-2xl p-6 border border-slate-200 text-center space-y-3 badge-lock transition">
+                    <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center text-3xl mx-auto">
+                        <i class="fa-solid fa-bridge-lock"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-800 text-base">معمار برجسته تاب‌آوری</h4>
+                    <p class="text-xs text-slate-500">حداقل کسب ۷۰ امتیاز در شبیه‌ساز</p>
+                    <span class="badge-status text-[11px] bg-slate-100 text-slate-500 px-3 py-1 rounded-full font-medium inline-block">قفل شده</span>
+                </div>
+
+                <!-- Badge 4 -->
+                <div id="badge-card-4" class="bg-white rounded-2xl p-6 border border-slate-200 text-center space-y-3 badge-lock transition">
+                    <div class="w-16 h-16 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center text-3xl mx-auto">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                    <h4 class="font-bold text-slate-800 text-base">تسهیل‌گر ممتاز SEL & ACT</h4>
+                    <p class="text-xs text-slate-500">پاسخ کامل به تمام سناریوها (۸۰ امتیاز)</p>
+                    <span class="badge-status text-[11px] bg-slate-100 text-slate-500 px-3 py-1 rounded-full font-medium inline-block">قفل شده</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-3">
+            <div class="flex items-center justify-center gap-2 text-brand-700 font-bold text-sm">
+                <i class="fa-solid fa-award"></i>
+                <span>طراح و تدوین‌کننده محتوا: سمیرا رضوانی</span>
+                <span class="text-slate-400">|</span>
+                <span class="text-slate-600 font-normal">سرگروه درس کار و فناوری قطب چابهار</span>
+            </div>
+            <p class="text-slate-500 text-xs leading-relaxed max-w-2xl mx-auto">
+                بر اساس راهنمای جامع معلمان کار و فناوری (پایه‌های ششم تا نهم) • تلفیق چارچوب‌های SEL ،STEAM و ACT برای ساخت انسان‌ها و توسعه تاب‌آوری اجتماعی در کلاس‌های درس.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // --- DATA: Scenarios based on the PDF Document ---
+        const scenarios = [
+            {
+                id: 1,
+                tag: "ایستگاه ۳: نقطه بحران و هیجان",
+                title: "در طول ساخت سازه چوب‌بستنی، یکی از دانش‌آموزان داد می‌زند: «این پروژه به درد نمی‌خورد! من دیگر کار نمی‌کنم!» و وسایل را روی میز رها می‌کند. واکنش درست شما چیست؟",
+                options: [
+                    {
+                        text: "به او تذکر جدی می‌دهید که اگر کار نکند نمره‌اش صفر می‌شود و باید کلاس را ترک کند.",
+                        isCorrect: false,
+                        feedbackTitle: "رویکرد سرزنش‌گرانه (Blame)",
+                        feedbackText: "این کار باعث ایجاد شرمساری، مقاومت بیشتر و توقف یادگیری می‌شود. تهدید به نمره هیجان منفی را تشدید می‌کند.",
+                        score: 0
+                    },
+                    {
+                        text: "احساس او را تایید کرده و می‌پرسید: «می‌بینم ناامید شدی؛ الان کوچک‌ترین قدم بعدی که گروه می‌تواند بردارد چیست؟»",
+                        isCorrect: true,
+                        feedbackTitle: "تسهیل‌گری آگاهانه (Mindful Facilitation)",
+                        feedbackText: "عالی! طبق مدل SEL و ACT، ابتدا هیجان را به رسمیت می‌شناسید (ناامیدی) و سپس بدون ناجی‌گری، تمرکز را بر «اقدام خُرد بعدی» می‌گذارید.",
+                        score: 10
+                    },
+                    {
+                        text: "دست به کار می‌شوید و خودتان قطعات خراب سازه را برای او می‌چسبانید تا پروژه پیش برود.",
+                        isCorrect: false,
+                        feedbackTitle: "ناجی‌گری معلم (Fixing)",
+                        feedbackText: "اگرچه مشکل فنی حل می‌شود، اما یادگیری مهارت اجتماعی و تاب‌آوری دانش‌آموز به صفر می‌رسد (سرقت چالش).",
+                        score: 0
+                    }
+                ]
+            },
+            {
+                id: 2,
+                tag: "تیم‌های کلاسی: عیب‌یابی رفتاری",
+                title: "در یک تیم، یک دانش‌آموز (دیکتاتور همه کاره) تمام کار ساخت را به تنهایی انجام می‌دهد و سایر اعضا فقط تماشاگر هستند. بهترین مداخله چیست؟",
+                options: [
+                    {
+                        text: "اجرای چرخش اجباری نقش‌ها (طراح، تستر، ثبت‌کننده) و الزام هر عضو به توضیح این‌که برای وظیفه‌اش به چه کمکی نیاز دارد.",
+                        isCorrect: true,
+                        feedbackTitle: "مداخله آگاهانه ساختاریافته",
+                        feedbackText: "درست است! این کار فرصت یادگیری را بین همه تقسیم کرده و مانع تسلط یک‌طرفه و انفعال دیگران می‌شود.",
+                        score: 10
+                    },
+                    {
+                        text: "سر کلاسی به بقیه بگویید: «چرا شما اینقدر تنبل هستید و بقیه کارها را به دوش این یک نفر انداخته‌اید؟»",
+                        isCorrect: false,
+                        feedbackTitle: "سرزنش و برچسب‌زنی",
+                        feedbackText: "برچسب تنبلی زدن باعث تخریب خودباوری شده و ریشه اصلی عدم تقسیم کار شفاف را حل نمی‌کند.",
+                        score: 0
+                    },
+                    {
+                        text: "هیچ دخالتی نکنید؛ زیرا مهم این است که سازه نهایی تیم درست و باکیفیت ساخته شود.",
+                        isCorrect: false,
+                        feedbackTitle: "وسواس محصول (نگاه سنتی)",
+                        feedbackText: "در نگاه سنتی فقط محصول مهم بود؛ اما هدف کار گروهی ساختن انسان‌ها و مهارت‌های ارتباطی است.",
+                        score: 0
+                    }
+                ]
+            },
+            {
+                id: 3,
+                tag: "ایستگاه ۴: پس از شکست (ACT)",
+                title: "هنگام تست بارگذاری، سازه پل یک گروه ناگهان می‌شکند و دانش‌آموزان دچار شوک و خشم می‌شوند. اولین اقدام شما چیست؟",
+                options: [
+                    {
+                        text: "سریعاً بگویید: «عیبی ندارد، اشکال از چسب بود، دوباره از اول بسازید.»",
+                        isCorrect: false,
+                        feedbackTitle: "عبور سریع از احساسات",
+                        feedbackText: "نادیده گرفتن احساسات باعث سرکوب ناامیدی می‌شود. باید ابتدا احساسات نام‌گذاری و پذیرفته شوند.",
+                        score: 0
+                    },
+                    {
+                        text: "اجرای «نام‌گذاری احساس» و «قانون ۴۵ ثانیه»: پرسیدن «الان چه احساسی داری؟» و بررسی علت شکست به عنوان داده علمی بدون سرزنش.",
+                        isCorrect: true,
+                        feedbackTitle: "رویکرد ACT (پذیرش و گسلش شناختی)",
+                        feedbackText: "فوق‌العاده! طبق ACT شکست سازه به معنای شکست هویت دانش‌آموز نیست؛ بلکه یک داده برای تحلیل مهندسی است.",
+                        score: 10
+                    },
+                    {
+                        text: "از نمره گروه به دلیل ناموفق بودن سازه کسر کنید تا یاد بگیرند محکم‌تر بسازند.",
+                        isCorrect: false,
+                        feedbackTitle: "مجازات شکست آزمایشگاهی",
+                        feedbackText: "تنبیه برای شکست در آزمایش، جرئت آزمایشگری و خلاقیت را در دانش‌آموزان نابود می‌کند.",
+                        score: 0
+                    }
+                ]
+            },
+            {
+                id: 4,
+                tag: "تیم‌های کلاسی: مدیریت تعارض",
+                title: "دو دانش‌آموز بر سر دو طرح متفاوت شدیداً بحث می‌کنند و به هم می‌گویند: «طرح تو کاملاً احمقانه است!». واکنش شما چیست؟",
+                options: [
+                    {
+                        text: "بحث را متوقف کرده و خودتان تعیین کنید کدام طرح اجرا شود.",
+                        isCorrect: false,
+                        feedbackTitle: "حل تعارض یک‌طرفه",
+                        feedbackText: "با این کار دانش‌آموزان یاد نمی‌گیرند چگونه تعارضات فکری خود را با معیارهای عینی حل کنند.",
+                        score: 0
+                    },
+                    {
+                        text: "انتقال تمرکز از «ارزیابی افراد» به «سنجش ایده‌ها» بر اساس ۳ معیار مشخص (استحکام، هزینه، ایمنی).",
+                        isCorrect: true,
+                        feedbackTitle: "تسهیل‌گری تعارض بر اساس معیار عینی",
+                        feedbackText: "احسنت! جایگزینی «من درست می‌گویم» با «معیارهای عینی»، بحث شخصی را به تحلیل منطقی مهندسی تبدیل می‌کند.",
+                        score: 10
+                    },
+                    {
+                        text: "آن‌ها را تهدید کنید که اگر دعوا را تمام نکنند هر دو را از گروه اخراج می‌کنید.",
+                        isCorrect: false,
+                        feedbackTitle: "ارعات و تهدید",
+                        feedbackText: "ایجاد رعب تنها تعارض را زیر پوستی می‌کند و امنیت روان‌شناختی کلاس را آسیب می‌زند.",
+                        score: 0
+                    }
+                ]
+            },
+            {
+                id: 5,
+                tag: "ایستگاه ۵: ارزشیابی دوگانه",
+                title: "برای نمره‌دهی پایانی پودمان کار و فناوری، کدام رویکرد ارزیابی با اهداف تاب‌آوری منطبق است؟",
+                options: [
+                    {
+                        text: "۱۰۰٪ نمره بر اساس این‌که آیا محصول نهایی کار می‌کند یا خیر.",
+                        isCorrect: false,
+                        feedbackTitle: "ارزشیابی تک‌بعدی محصول",
+                        feedbackText: "این روش باعث می‌شود دانش‌آموزان برای کسب نمره، اعضای ضعیف‌تر را از گروه حذف کنند.",
+                        score: 0
+                    },
+                    {
+                        text: "ارزشیابی دوگانه: تفکیک نمره «فرایند و رفتار تاب‌آورانه» (مدیریت تعارض، تقسیم کار) از نمره «محصول فنی».",
+                        isCorrect: true,
+                        feedbackTitle: "ارزشیابی دوگانه جامع (Process + Product)",
+                        feedbackText: "کاملاً درست! نمره‌دهی به مسیر و نحوه‌ی مواجهه با اشتباهات، انگیزه همکاری واقعی را تقویت می‌کند.",
+                        score: 10
+                    },
+                    {
+                        text: "نمره‌دهی بر اساس خصوصیات اخلاقی فردی مثل «خجالتی بودن» یا «باهوش بودن».",
+                        isCorrect: false,
+                        feedbackTitle: "قضاوت شخصیت فردی",
+                        feedbackText: "قانون طلایی: هرگز به ویژگی‌های شخصیتی نمره ندهید؛ بلکه فقط رفتارهای قابل مشاهده را بسنجید.",
+                        score: 0
+                    }
+                ]
+            },
+            {
+                id: 6,
+                tag: "محدودیت منابع و واقع‌بینی",
+                title: "زمان کلاس رو به پایان است و مواد اولیه گروه تمام شده اما پروژه هنوز کامل نشده است. بهترین اقدام کدام است؟",
+                options: [
+                    {
+                        text: "بازتعریف مسئله: هدایت گروه به سمت ساخت نمونه اولیه کوچک‌تر یا شبیه‌سازی و تمرکز بر یادگیری عمیق به جای ساخت کامل.",
+                        isCorrect: true,
+                        feedbackTitle: "مدیریت محدودیت و واقع‌بینی",
+                        feedbackText: "عالی! تغییر هدف فرعی و مدیریت محدودیت منابع، بالاترین سطح تمرین مسئولیت‌پذیری و تاب‌آوری است.",
+                        score: 10
+                    },
+                    {
+                        text: "به آن‌ها وقت اضافه ناهار بدهید و بگوئید تا هر وقت طول کشید باید حتما نسخه کامل را بسازند.",
+                        isCorrect: false,
+                        feedbackTitle: "نادیده گرفتن محدودیت‌های واقعی",
+                        feedbackText: "مدیریت زمان خود یکی از مهارت‌های کلیدی مهندسی و زندگی است.",
+                        score: 0
+                    },
+                    {
+                        text: "پروژه آن‌ها را به دلیل عدم اتمام در زمان مقرر، کلاً جریمه و مردود اعلام کنید.",
+                        isCorrect: false,
+                        feedbackTitle: "سخت‌گیری غیرسازنده",
+                        feedbackText: "هدف یادگیری مواجهه با محدودیت است نه تنبیه به خاطر کمبود زمان.",
+                        score: 0
+                    }
+                ]
+            },
+            {
+                id: 7,
+                tag: "تیم‌های کلاسی: غایب پنهان",
+                title: "دانش‌آموزی گوشه‌ای نشسته و می‌گوید: «من کارهای دستی بلد نیستم، بچه‌ها خودتان انجام دهید.» چطور او را وارد چرخه کنید؟",
+                options: [
+                    {
+                        text: "دادن یک مأموریت خُرد مشخص و کم‌خطر (مثلاً: رسم ۳ طرح روی کاغذ و بررسی محدودیت‌های آن) و افزایش تدریجی مسئولیت.",
+                        isCorrect: true,
+                        feedbackTitle: "توانمندسازی تدریجی",
+                        feedbackText: "درست است! شکستن مسئولیت به کارهای کوچک و کم‌خطر، احساس کفایت را در فرد بیدار می‌کند.",
+                        score: 10
+                    },
+                    {
+                        text: "او را مجبور کنید پیچیده‌ترین بخش ساخت را انجام دهد تا ترسش بریزد.",
+                        isCorrect: false,
+                        feedbackTitle: "فشار بی‌موقع",
+                        feedbackText: "این کار ممکن است منجر به شکست سنگین و اضطراب شدیدتر او شود.",
+                        score: 0
+                    },
+                    {
+                        text: "اجازه دهید تا پایان پروژه کاری انجام ندهد تا مزاحم بقیه اعضا نشود.",
+                        isCorrect: false,
+                        feedbackTitle: "طرد خاموش",
+                        feedbackText: "این رفتار حس بی‌ارزشی را در دانش‌آموز تقویت کرده و مخالف اصول SEL است.",
+                        score: 0
+                    }
+                ]
+            },
+            {
+                id: 8,
+                tag: "ایستگاه ۱: قواعد بازی پیش از شروع",
+                title: "قبل از توزیع چوب‌بستنی‌ها و ابزار ساخت، معلم برجسته تاب‌آوری چه اقدامی در کلاس انجام می‌دهد؟",
+                options: [
+                    {
+                        text: "فوراً وسایل را پخش کرده و می‌گوید هر کس سریع‌تر بسازد نمره ۲۰ می‌گیرد.",
+                        isCorrect: false,
+                        feedbackTitle: "شروع بدون زیربنای اخلاقی",
+                        feedbackText: "این کار باعث رقابت ناسالم، شلوغی و تخریب وسایل می‌شود.",
+                        score: 0
+                    },
+                    {
+                        text: "تعیین قواعد واضح همکاری (مانند: مسخره نکردن اشتباهات، گوش دادن به نظر همه) پیش از دست زدن به ابزار.",
+                        isCorrect: true,
+                        feedbackTitle: "ایستگاه ۱: قواعد بازی و امنیت",
+                        feedbackText: "کاملاً درست! قواعد بازی ميثاق امنیتی کلاس را قبل از بروز چالش‌ها و هیجانات شفاف می‌سازد.",
+                        score: 10
+                    },
+                    {
+                        text: "نیم ساعت درباره تاریخچه ساخت پل‌ها سخنرانی تئوری می‌کند.",
+                        isCorrect: false,
+                        feedbackTitle: "تئوری‌زدگی بدون انگیزش",
+                        feedbackText: "در یادگیری STEAM تمرکز بر مسئله‌محوری و ساخت فعالانه با قواعد شفاف است.",
+                        score: 0
+                    }
+                ]
+            }
+        ];
+
+        // --- APP STATE ---
+        let currentStep = 0;
+        let score = 0;
+        let selectedOption = null;
+
+        // --- NAVIGATION ---
+        function switchTab(tabName) {
+            // Hide all sections
+            document.getElementById('section-hub').classList.add('hidden');
+            document.getElementById('section-simulator').classList.add('hidden');
+            document.getElementById('section-badges').classList.add('hidden');
+
+            // Deactivate all tab buttons
+            document.getElementById('tab-hub').classList.remove('active');
+            document.getElementById('tab-simulator').classList.remove('active');
+            document.getElementById('tab-badges').classList.remove('active');
+
+            // Show selected section & activate tab
+            document.getElementById(`section-${tabName}`).classList.remove('hidden');
+            document.getElementById(`tab-${tabName}`).classList.add('active');
+
+            if (tabName === 'simulator' && currentStep === 0) {
+                loadScenario(0);
+            }
+        }
+
+        // --- QUIZ LOGIC ---
+        function loadScenario(index) {
+            const scenario = scenarios[index];
+            selectedOption = null;
+
+            document.getElementById('quiz-step').innerText = index + 1;
+            document.getElementById('scenario-tag').innerText = scenario.tag;
+            document.getElementById('scenario-title').innerText = scenario.title;
+
+            // Reset Feedback Box
+            const feedbackBox = document.getElementById('feedback-box');
+            feedbackBox.classList.add('hidden');
+
+            // Reset Next Button
+            const nextBtn = document.getElementById('next-btn');
+            nextBtn.disabled = true;
+            nextBtn.className = "bg-slate-300 text-slate-500 font-bold py-3 px-8 rounded-xl cursor-not-allowed transition";
+
+            // Render Options
+            const container = document.getElementById('options-container');
+            container.innerHTML = '';
+
+            scenario.options.forEach((opt, optIndex) => {
+                const optBtn = document.createElement('button');
+                optBtn.className = `w-full text-right p-4 rounded-2xl border border-slate-200 hover:border-brand-400 bg-slate-50/50 hover:bg-white text-slate-700 text-xs sm:text-sm leading-relaxed font-medium transition flex items-start gap-3`;
+                optBtn.onclick = () => selectOption(optIndex);
+                optBtn.innerHTML = `
+                    <span class="w-6 h-6 rounded-full border border-slate-300 flex items-center justify-center text-xs flex-shrink-0 font-bold text-slate-500 bg-white">${optIndex + 1}</span>
+                    <span>${opt.text}</span>
+                `;
+                container.appendChild(optBtn);
+            });
+        }
+
+        function selectOption(optIndex) {
+            if (selectedOption !== null) return; // Prevent changing after select
+            selectedOption = optIndex;
+
+            const scenario = scenarios[currentStep];
+            const option = scenario.options[optIndex];
+
+            // Score update
+            score += option.score;
+            document.getElementById('current-score').innerText = score;
+
+            // UI Feedback for options
+            const buttons = document.getElementById('options-container').children;
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].disabled = true;
+                if (i === optIndex) {
+                    if (option.isCorrect) {
+                        buttons[i].className = "w-full text-right p-4 rounded-2xl border-2 border-emerald-500 bg-emerald-50 text-emerald-900 text-xs sm:text-sm font-bold flex items-start gap-3 shadow-sm";
+                    } else {
+                        buttons[i].className = "w-full text-right p-4 rounded-2xl border-2 border-rose-500 bg-rose-50 text-rose-900 text-xs sm:text-sm font-bold flex items-start gap-3 shadow-sm";
+                    }
+                } else {
+                    buttons[i].className = "w-full text-right p-4 rounded-2xl border border-slate-200 bg-slate-100/50 text-slate-400 text-xs sm:text-sm flex items-start gap-3 opacity-60";
+                }
+            }
+
+            // Show Feedback Box
+            const feedbackBox = document.getElementById('feedback-box');
+            const feedbackIcon = document.getElementById('feedback-icon');
+            const feedbackTitle = document.getElementById('feedback-title');
+            const feedbackText = document.getElementById('feedback-text');
+
+            feedbackBox.classList.remove('hidden');
+            if (option.isCorrect) {
+                feedbackBox.className = "p-5 rounded-2xl border border-emerald-200 bg-emerald-50/80 mb-6 transition-all";
+                feedbackIcon.className = "fa-solid fa-circle-check text-emerald-600 text-xl";
+                feedbackTitle.className = "font-bold text-emerald-900 text-sm mb-1";
+            } else {
+                feedbackBox.className = "p-5 rounded-2xl border border-rose-200 bg-rose-50/80 mb-6 transition-all";
+                feedbackIcon.className = "fa-solid fa-circle-xmark text-rose-600 text-xl";
+                feedbackTitle.className = "font-bold text-rose-900 text-sm mb-1";
+            }
+
+            feedbackTitle.innerText = option.feedbackTitle;
+            feedbackText.innerText = option.feedbackText;
+
+            // Enable Next Button
+            const nextBtn = document.getElementById('next-btn');
+            nextBtn.disabled = false;
+            nextBtn.className = "bg-brand-600 hover:bg-brand-700 text-white font-bold py-3 px-8 rounded-xl shadow-md transition cursor-pointer";
+            
+            // Check Badges Status
+            updateBadges();
+        }
+
+        function nextQuestion() {
+            if (currentStep < scenarios.length - 1) {
+                currentStep++;
+                loadScenario(currentStep);
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            document.getElementById('quiz-container').classList.add('hidden');
+            const resultContainer = document.getElementById('result-container');
+            resultContainer.classList.remove('hidden');
+
+            document.getElementById('final-score').innerText = score;
+
+            // Determine final badge title
+            let badgeTitle = "آموزگار در حال یادگیری";
+            if (score >= 80) badgeTitle = "تسهیل‌گر ممتاز SEL & ACT (۸۰ امتیاز)";
+            else if (score >= 70) badgeTitle = "معمار برجسته تاب‌آوری (۷۰ امتیاز)";
+            else if (score >= 50) badgeTitle = "استاد مدیریت بحران کلاسی (۵۰ امتیاز)";
+            else if (score >= 30) badgeTitle = "پایه‌گذار امنیت روان‌شناختی (۳۰ امتیاز)";
+
+            document.getElementById('final-badge-title').innerText = badgeTitle;
+        }
+
+        function restartQuiz() {
+            currentStep = 0;
+            score = 0;
+            document.getElementById('current-score').innerText = 0;
+            document.getElementById('result-container').classList.add('hidden');
+            document.getElementById('quiz-container').classList.remove('hidden');
+            loadScenario(0);
+        }
+
+        function updateBadges() {
+            const b1 = document.getElementById('badge-card-1');
+            const b2 = document.getElementById('badge-card-2');
+            const b3 = document.getElementById('badge-card-3');
+            const b4 = document.getElementById('badge-card-4');
+
+            if (score >= 30) unlockBadge(b1);
+            if (score >= 50) unlockBadge(b2);
+            if (score >= 70) unlockBadge(b3);
+            if (score >= 80) unlockBadge(b4);
+        }
+
+        function unlockBadge(element) {
+            element.classList.remove('badge-lock');
+            const statusSpan = element.querySelector('.badge-status');
+            if (statusSpan) {
+                statusSpan.className = "badge-status text-[11px] bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full font-bold inline-block";
+                statusSpan.innerText = "کسب شده ✓";
+            }
+        }
+    </script>
+</body>
+</html>
